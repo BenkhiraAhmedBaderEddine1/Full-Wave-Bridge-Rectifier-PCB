@@ -271,3 +271,219 @@ The investigation focuses on the following engineering challenges:
 <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&height=100&color=0:0B1020,50:312E81,100:0891B2&section=footer" />
 
 </div>
+
+<div align="center">
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=rect&height=5&color=0:7C3AED,50:22D3EE,100:6366F1" />
+
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=800&size=26&duration=2600&pause=900&color=22D3EE&center=true&vCenter=true&width=850&height=55&lines=05+%2F+PROJECT+SCOPE;06+%2F+THEORETICAL+ANALYSIS;ENGINEERING+%2B+MATHEMATICS" alt="Project Scope and Theoretical Analysis" />
+
+<img src="https://img.shields.io/badge/SYSTEM-AC--DC_CONVERSION-0B1020?style=for-the-badge&labelColor=312E81" />
+<img src="https://img.shields.io/badge/TOPOLOGY-FULL--WAVE_BRIDGE-0B1020?style=for-the-badge&labelColor=0E7490" />
+<img src="https://img.shields.io/badge/FOCUS-CIRCUIT_ANALYSIS-0B1020?style=for-the-badge&labelColor=6D28D9" />
+
+<br/>
+
+<sub>DEFINE THE SYSTEM · UNDERSTAND THE CIRCUIT · QUANTIFY THE PERFORMANCE</sub>
+
+</div>
+
+---
+
+<details open>
+<summary><strong>✦ 05. SCOPE OF THE PROJECT</strong></summary>
+
+<br/>
+
+<div align="center">
+
+### `SYSTEM BOUNDARIES & FUNCTIONAL ARCHITECTURE`
+
+</div>
+
+The core of this project is the design and analysis of a **full-wave bridge rectifier PCB**. Its scope focuses on AC-to-DC rectification, semiconductor operation, circuit implementation, and the electrical characteristics of the resulting output.
+
+The circuit is not assumed to be a regulated power supply. Filtering and voltage regulation are treated as optional extensions unless they are explicitly implemented in the actual design.
+
+#### Functional stages
+
+```mermaid
+flowchart LR
+    A["AC INPUT<br/>Low-voltage source"] --> B["DIODE BRIDGE<br/>Four semiconductors"]
+    B --> C["FULL-WAVE<br/>RECTIFICATION"]
+    C --> D["PULSATING DC<br/>OUTPUT"]
+    D -. "Optional" .-> E["FILTER<br/>Capacitor"]
+    E -. "Optional" .-> F["REGULATOR<br/>Voltage control"]
+
+    classDef source fill:#172554,stroke:#60A5FA,color:#FFFFFF,stroke-width:2px
+    classDef bridge fill:#312E81,stroke:#A78BFA,color:#FFFFFF,stroke-width:2px
+    classDef output fill:#064E3B,stroke:#34D399,color:#FFFFFF,stroke-width:2px
+    classDef optional fill:#27272A,stroke:#71717A,color:#E4E4E7,stroke-dasharray:5 5
+
+    class A source
+    class B,C bridge
+    class D output
+    class E,F optional
+```
+
+<div align="center">
+
+<img src="https://img.shields.io/badge/CORE_SCOPE-RECTIFICATION_ONLY-312E81?style=for-the-badge" />
+<img src="https://img.shields.io/badge/OPTIONAL-FILTERING-52525B?style=for-the-badge" />
+<img src="https://img.shields.io/badge/OPTIONAL-VOLTAGE_REGULATION-52525B?style=for-the-badge" />
+
+</div>
+
+#### Scope definition
+
+| Functional stage | Description | Project status |
+|---|---|---|
+| AC input | Low-voltage AC source or transformer secondary | Required |
+| Four-diode bridge | Converts both AC half-cycles | Core circuit |
+| Rectified output | Unidirectional, pulsating DC voltage | Required |
+| Capacitor filtering | Reduces output-voltage ripple | Optional |
+| Voltage regulation | Maintains a controlled DC output | Optional |
+
+> **Engineering boundary:** The actual PCB schematic determines which stages are present. A filter or regulator must not be claimed as an implemented feature unless it exists in the circuit.
+
+</details>
+
+---
+
+<details open>
+<summary><strong>✦ 06. THEORETICAL BACKGROUND & MATHEMATICAL ANALYSIS</strong></summary>
+
+<br/>
+
+<div align="center">
+
+### `THE PHYSICS BEHIND FULL-WAVE RECTIFICATION`
+
+<img src="https://capsule-render.vercel.app/api?type=rect&height=3&color=0:312E81,50:22D3EE,100:7C3AED" width="70%" />
+
+</div>
+
+### `6.1 — Operating Principle`
+
+A full-wave bridge rectifier consists of four semiconductor diodes connected in a bridge configuration. During each half-cycle of the AC input, a different pair of diodes conducts, maintaining the same polarity across the load.
+
+Consequently, both the positive and negative half-cycles contribute to the rectified output. The output voltage is unidirectional but remains pulsating unless a suitable filtering stage is added.
+
+#### Bridge rectification — functional flow
+
+```mermaid
+flowchart TD
+    A(["AC INPUT<br/>v(t) = Vm sin(ωt)"]) --> B{"Input half-cycle?"}
+
+    B -->|"Positive"| C["Conducting pair<br/>D1 and D4*"]
+    B -->|"Negative"| D["Conducting pair<br/>D2 and D3*"]
+
+    C --> E["Current through load<br/>in the same direction"]
+    D --> E
+
+    E --> F["FULL-WAVE OUTPUT<br/>vout(t) ≥ 0"]
+
+    F --> G["Pulsating DC"]
+    G --> H["Optional smoothing filter"]
+
+    classDef input fill:#172554,stroke:#60A5FA,color:#FFFFFF,stroke-width:2px
+    classDef decision fill:#312E81,stroke:#A78BFA,color:#FFFFFF,stroke-width:2px
+    classDef conduction fill:#0F766E,stroke:#5EEAD4,color:#FFFFFF,stroke-width:2px
+    classDef result fill:#064E3B,stroke:#34D399,color:#FFFFFF,stroke-width:2px
+    classDef extension fill:#27272A,stroke:#A1A1AA,color:#FFFFFF,stroke-dasharray:5 5
+
+    class A input
+    class B decision
+    class C,D,E conduction
+    class F,G result
+    class H extension
+```
+
+<sub>*The conducting diode pairs depend on the bridge's actual diode labeling and input/output terminal orientation. Confirm the pair names against your schematic.</sub>
+
+### `6.2 — Input Voltage Model`
+
+For a sinusoidal AC input, the instantaneous input voltage can be expressed as:
+
+\[
+v_{in}(t)=V_m\sin(\omega t)
+\]
+
+Where:
+
+- \(V_m\) is the peak input voltage.
+- \(\omega=2\pi f\) is the angular frequency.
+- \(f\) is the AC supply frequency.
+- \(t\) is time.
+
+For an ideal bridge rectifier, the output voltage is:
+
+\[
+v_{out}(t)=|V_m\sin(\omega t)|
+\]
+
+This absolute-value relationship illustrates how the negative half-cycle is inverted at the load, producing a full-wave rectified waveform.
+
+### `6.3 — Average DC Output Voltage`
+
+For an ideal full-wave rectifier with a sinusoidal input and no smoothing capacitor:
+
+\[
+V_{DC}=\frac{2V_m}{\pi}\approx0.637V_m
+\]
+
+Since \(V_m=\sqrt{2}V_{RMS}\):
+
+\[
+V_{DC}\approx0.900V_{RMS}
+\]
+
+For a practical bridge, two diodes conduct in series during each half-cycle. A simplified approximation is:
+
+\[
+v_{out}(t)\approx\max\left(|v_{in}(t)|-2V_F,\,0\right)
+\]
+
+where \(V_F\) is the forward-voltage drop of an individual conducting diode. The actual average output depends on the input voltage, diode characteristics, source impedance, and load.
+
+### `6.4 — Output Frequency`
+
+The output ripple frequency of a full-wave rectifier is twice the input frequency:
+
+\[
+f_{out}=2f_{in}
+\]
+
+For example, a 50 Hz sinusoidal input produces a rectified waveform with a 100 Hz pulse repetition frequency, while a 60 Hz input produces 120 Hz.
+
+### `6.5 — Ripple & Optional Filtering`
+
+If a smoothing capacitor is included, a commonly used approximation for the peak-to-peak ripple under suitable load and small-ripple conditions is:
+
+\[
+V_{r(pp)}\approx\frac{I_{load}}{2f_{in}C}
+\]
+
+Where:
+
+- \(I_{load}\) is the load current.
+- \(f_{in}\) is the AC input frequency.
+- \(C\) is the smoothing capacitance.
+
+This equation is an approximation for a capacitor-input filter; it does not describe an unfiltered bridge output. The actual ripple depends on load, capacitance, source impedance, and diode conduction intervals.
+
+</details>
+
+---
+
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=rect&height=4&color=0:7C3AED,50:22D3EE,100:6366F1" width="100%" />
+
+### `ANALYZE → RECTIFY → EVALUATE`
+
+<sub>POWER ELECTRONICS · SEMICONDUCTOR CIRCUITS · PCB ENGINEERING</sub>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&height=100&color=0:080B24,50:312E81,100:0891B2&section=footer" width="100%" />
+
+</div>
