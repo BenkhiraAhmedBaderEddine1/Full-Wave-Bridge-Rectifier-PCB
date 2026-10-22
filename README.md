@@ -63,3 +63,8 @@ flowchart TB
 <sub>MIDNIGHT BLUE · ELECTRIC CYAN · VIOLET</sub>
 
 </div>
+
+
+![image alt](https://github.com/BenkhiraAhmedBaderEddine1/Full-Wave-Bridge-Rectifier-PCB/blob/b1377209773fa9046c340cb3bbc02719d7b8a191/photo_2026-10-22_20-11-33.jpg)
+![image alt](https://github.com/BenkhiraAhmedBaderEddine1/Full-Wave-Bridge-Rectifier-PCB/blob/b1377209773fa9046c340cb3bbc02719d7b8a191/photo_2026-10-22_20-11-35.jpg)
+![image alt](https://github.com/BenkhiraAhmedBaderEddine1/Full-Wave-Bridge-Rectifier-PCB/blob/b1377209773fa9046c340cb3bbc02719d7b8a191/photo_2026-10-22_20-11-37.jpg)
