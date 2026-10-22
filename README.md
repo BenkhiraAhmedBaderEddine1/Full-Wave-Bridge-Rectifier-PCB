@@ -404,3 +404,8 @@ flowchart TD
 
 
 ![image alt](https://github.com/BenkhiraAhmedBaderEddine1/Full-Wave-Bridge-Rectifier-PCB/blob/f37bd425aad6ffb6e8810d74ae36cebe46ec6604/Screenshot%202026-10-22%20201908.png)
+
+- the load in the defined output direction.
+- Negative half-cycle: the other diagonal pair conducts, maintaining the same current direction through the load.
+- Result: both half-cycles contribute to the output, producing a pulsating DC waveform with twice the input frequency.
+For a conventional single-phase input, the rectified ripple frequency is therefore twice the AC supply frequency
