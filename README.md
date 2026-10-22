@@ -133,3 +133,141 @@ The resulting PCB provides a practical engineering platform for studying AC-to-D
 <sub>POWER ELECTRONICS • CIRCUIT ANALYSIS • PCB IMPLEMENTATION</sub>
 
 </div>
+
+
+<div align="center">
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=rect&height=5&color=0:7C3AED,45:22D3EE,100:7C3AED" />
+
+<br/>
+
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=800&size=27&duration=2500&pause=900&color=22D3EE&center=true&vCenter=true&width=800&height=55&lines=02+%2F+INTRODUCTION;03+%2F+PROBLEM+STATEMENT;04+%2F+PROJECT+OBJECTIVES" alt="Introduction, Problem Statement and Project Objectives" />
+
+<img src="https://img.shields.io/badge/RESEARCH-0B1020?style=for-the-badge&labelColor=312E81" />
+<img src="https://img.shields.io/badge/POWER_ELECTRONICS-0B1020?style=for-the-badge&labelColor=0E7490" />
+<img src="https://img.shields.io/badge/ENGINEERING_DESIGN-0B1020?style=for-the-badge&labelColor=6D28D9" />
+
+<br/><br/>
+
+</div>
+
+---
+
+<details open>
+<summary><strong>✦ 02. INTRODUCTION — Background & Engineering Context</strong></summary>
+
+<br/>
+
+<div align="center">
+
+### `FROM ALTERNATING CURRENT TO USEFUL DC POWER`
+
+<img src="https://capsule-render.vercel.app/api?type=rect&height=3&color=0:312E81,50:22D3EE,100:312E81" width="65%" />
+
+</div>
+
+Electrical and electronic systems frequently require a **direct-current (DC) power source**, even when the available energy source provides alternating-current (AC) voltage. This requirement arises in embedded systems, industrial control circuits, instrumentation, electronic interfaces, and power-supply applications.
+
+A rectifier performs the conversion from AC into a unidirectional current. Among the common rectifier topologies, the **full-wave bridge rectifier** is widely used because it utilizes both half-cycles of the AC waveform without requiring a center-tapped transformer.
+
+However, designing a practical rectifier involves more than connecting four diodes. The engineer must consider source voltage, diode ratings, load current, power dissipation, reverse-voltage withstand capability, PCB trace dimensions, terminal placement, and the quality of the resulting DC waveform.
+
+This project addresses these considerations by combining theoretical electrical analysis with PCB-oriented engineering. It progresses from understanding the circuit principle to developing a physical board that can be inspected, assembled, and tested.
+
+Its academic value lies in the opportunity to extend basic rectification into **quantitative performance evaluation, simulation, design optimization, and experimental validation**—making it a useful foundation for advanced engineering work.
+
+<div align="center">
+
+<img src="https://img.shields.io/badge/AC_INPUT-6366F1?style=flat-square" />
+<img src="https://img.shields.io/badge/4--DIODE_BRIDGE-7C3AED?style=flat-square" />
+<img src="https://img.shields.io/badge/RECTIFIED_OUTPUT-0891B2?style=flat-square" />
+
+</div>
+
+</details>
+
+---
+
+<details open>
+<summary><strong>✦ 03. PROBLEM STATEMENT — The Engineering Challenge</strong></summary>
+
+<br/>
+
+<div align="center">
+
+### `DESIGNING A RELIABLE AC-TO-DC CONVERSION STAGE`
+
+</div>
+
+The central engineering question addressed by this project is:
+
+> **How can an AC input be converted into a reliable, unidirectional DC output using a compact PCB while maintaining acceptable electrical losses, component temperatures, and output-waveform quality?**
+
+The investigation focuses on the following engineering challenges:
+
+| ID | Engineering question |
+|:--:|---|
+| <img src="https://img.shields.io/badge/01-6366F1?style=flat-square" /> | How do the four diodes conduct during the positive and negative input half-cycles? |
+| <img src="https://img.shields.io/badge/02-7C3AED?style=flat-square" /> | What output voltage is expected after accounting for diode forward-voltage drops? |
+| <img src="https://img.shields.io/badge/03-0891B2?style=flat-square" /> | How do diode current and reverse-voltage ratings affect operating limits and safety margins? |
+| <img src="https://img.shields.io/badge/04-4F46E5?style=flat-square" /> | How does PCB layout influence current paths, manufacturability, and reliability? |
+| <img src="https://img.shields.io/badge/05-9333EA?style=flat-square" /> | How can theoretical behavior be compared with simulated and measured results? |
+| <img src="https://img.shields.io/badge/06-0E7490?style=flat-square" /> | What modifications are required to obtain smoother, regulated, or higher-current DC output? |
+
+<div align="center">
+
+<img width="85%" src="https://capsule-render.vercel.app/api?type=rect&height=3&color=0:7C3AED,50:22D3EE,100:7C3AED" />
+
+</div>
+
+</details>
+
+---
+
+<details open>
+<summary><strong>✦ 04. PROJECT OBJECTIVES — Design & Validation Roadmap</strong></summary>
+
+<br/>
+
+<div align="center">
+
+### `FROM CIRCUIT THEORY TO PCB IMPLEMENTATION`
+
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=15&duration=2200&pause=700&color=A78BFA&center=true&vCenter=true&width=700&height=32&lines=ANALYZE+%E2%86%92+DESIGN+%E2%86%92+IMPLEMENT;CALCULATE+%E2%86%92+SIMULATE+%E2%86%92+VALIDATE" alt="Engineering workflow" />
+
+</div>
+
+**Main objective:** To design and analyze a full-wave bridge rectifier PCB for AC-to-DC conversion, considering its electrical behavior, component selection, and practical implementation requirements.
+
+#### `01 — THEORETICAL ANALYSIS`
+
+- Understand the operating principle of a four-diode bridge rectifier.
+- Calculate expected output voltage, current, ripple, and power losses.
+- Analyze diode conduction paths and semiconductor voltage drops.
+
+#### `02 — CIRCUIT & PCB DESIGN`
+
+- Develop and verify the electrical schematic.
+- Select components according to the intended input voltage and load.
+- Create a manufacturable PCB layout.
+- Check footprints, polarity, electrical connectivity, and clearances.
+
+#### `03 — TESTING & PERFORMANCE EVALUATION`
+
+- Assemble and inspect the PCB, if fabrication is included.
+- Evaluate circuit operation through electrical measurements and waveform analysis.
+- Compare theoretical, simulated, and measured results where available.
+- Identify limitations and propose technically justified improvements.
+
+<div align="center">
+
+<img src="https://img.shields.io/badge/01-THEORY-312E81?style=for-the-badge" />
+<img src="https://img.shields.io/badge/02-DESIGN-4338CA?style=for-the-badge" />
+<img src="https://img.shields.io/badge/03-IMPLEMENTATION-0E7490?style=for-the-badge" />
+<img src="https://img.shields.io/badge/04-VALIDATION-7C3AED?style=for-the-badge" />
+
+<br/><br/>
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&height=100&color=0:0B1020,50:312E81,100:0891B2&section=footer" />
+
+</div>
