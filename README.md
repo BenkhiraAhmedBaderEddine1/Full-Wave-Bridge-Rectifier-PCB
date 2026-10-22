@@ -686,3 +686,484 @@ These are illustrative estimates based on the stated assumptions. Actual load po
 <sub>MATHEMATICAL MODELING · POWER CONVERSION · PCB ENGINEERING</sub>
 
 </div>
+
+---
+
+<div align="center">
+
+# ⚡ FULL-WAVE BRIDGE RECTIFIER PCB
+
+### ELECTRONIC COMPONENTS • PCB ENGINEERING • SIMULATION • VALIDATION
+
+![Power Electronics](https://img.shields.io/badge/DOMAIN-Power%20Electronics-ff5722?style=for-the-badge)
+![PCB Design](https://img.shields.io/badge/DESIGN-PCB%20Engineering-e53935?style=for-the-badge)
+![Analysis](https://img.shields.io/badge/ANALYSIS-Circuit%20Theory-ff9800?style=for-the-badge)
+![Documentation](https://img.shields.io/badge/LEVEL-Engineering%20Project-212121?style=for-the-badge)
+
+*From circuit theory to practical printed circuit board implementation.*
+
+</div>
+
+---
+
+# ✦ 08 — ELECTRONIC COMPONENTS & FUNCTIONAL ANALYSIS
+
+> **Engineering objective:** Identify the components required by the actual circuit, explain their functions, and establish the electrical, thermal, and mechanical criteria used to select them.
+
+## 08.1 — Bill of Materials (BOM)
+
+The final bill of materials must be extracted from the actual schematic and PCB design files. The following table describes a typical bridge rectifier implementation; optional components must only be listed as installed when confirmed in the project.
+
+| Component | Symbol / Reference | Primary Function | Key Design Considerations |
+|:---|:---:|:---|:---|
+| Rectifier diodes | D1–D4 | Convert both AC half-cycles into a unidirectional output | Average forward current, surge current, reverse-voltage rating, forward drop, thermal limits |
+| AC input connector | J1 | Connect the intended AC source | Current rating, terminal spacing, insulation, secure wiring |
+| DC output connector | J2 | Connect the external load | Polarity marking, current rating, contact resistance |
+| Load resistor or external load | \(R_L\) | Consumes output power | Resistance, power rating, operating current |
+| Smoothing capacitor *(if fitted)* | \(C\) | Reduces output-voltage ripple | Capacitance, voltage rating, ripple-current rating, polarity |
+| Fuse or current protection *(if fitted)* | F1 | Helps protect against overcurrent faults | Fuse rating, breaking capacity, coordination with the source |
+| PCB substrate | PCB | Provides mechanical support and electrical insulation | Material, thickness, temperature rating |
+| Copper traces | PCB copper | Provide electrical interconnections | Trace width, copper thickness, temperature rise, clearances |
+| Mounting hardware *(if used)* | — | Secures the board mechanically | Dimensions, stability, electrical isolation where necessary |
+
+### Component-selection principle
+
+A diode's headline current rating alone is insufficient. The selection must account for actual operating conditions, including ambient temperature, cooling, surge current, reverse voltage and duty cycle.
+
+During normal bridge operation, current passes through two conducting diode junctions. The resulting conduction loss can be approximated by:
+
+$$
+\boxed{P_{\mathrm{diodes}} \approx 2V_F I_{\mathrm{DC}}}
+$$
+
+This is a simplified estimate assuming a roughly constant forward-voltage drop and continuous representative load current. A more accurate loss calculation should use the actual current waveform and the diode's datasheet characteristics.
+
+---
+
+# ✦ 09 — CIRCUIT DESIGN & PCB DEVELOPMENT METHODOLOGY
+
+## 09.1 — Engineering workflow
+
+The PCB development process should be documented as a reproducible sequence of engineering activities.
+
+```mermaid
+flowchart TD
+    A(["01 · Requirements Definition"]) --> B["02 · Circuit Schematic"]
+    B --> C["03 · Component & Footprint Selection"]
+    C --> D["04 · PCB Placement & Routing"]
+    D --> E["05 · ERC / DRC Verification"]
+    E --> F{"Design checks passed?"}
+    F -- "No" --> G["Review schematic, footprints and routing"]
+    G --> D
+    F -- "Yes" --> H["06 · Manufacturing File Generation"]
+    H --> I["07 · PCB Fabrication & Assembly"]
+    I --> J["08 · Electrical Inspection"]
+    J --> K["09 · Controlled Testing & Validation"]
+    K --> L(["Engineering Report & Final Documentation"])
+
+    classDef start fill:#171717,stroke:#ff5722,color:#ffffff,stroke-width:2px
+    classDef process fill:#202020,stroke:#ff9800,color:#ffffff,stroke-width:1.5px
+    classDef decision fill:#351a12,stroke:#ff5722,color:#ffffff,stroke-width:2px
+    classDef finish fill:#17251d,stroke:#4caf50,color:#ffffff,stroke-width:2px
+
+    class A,L start
+    class B,C,D,E,G,H,I,J,K process
+    class F decision
+```
+
+## 09.2 — Development stages
+
+| Stage | Engineering Activity | Verification Target |
+|:---:|:---|:---|
+| 01 | Requirements definition | Input voltage, frequency, load, current and operating limits |
+| 02 | Schematic development | Correct bridge connections, diode orientation and output polarity |
+| 03 | Component selection | Datasheet compliance and suitable footprints |
+| 04 | PCB layout | Practical routing, current paths, spacing and manufacturability |
+| 05 | Design verification | Electrical-rule checks (ERC) and design-rule checks (DRC) |
+| 06 | Fabrication preparation | Correct manufacturing outputs and board dimensions |
+| 07 | Assembly | Correct component placement, soldering and polarity |
+| 08 | Inspection | Continuity, shorts, connector orientation and visible defects |
+| 09 | Testing | Defined input conditions, load conditions and measured outputs |
+| 10 | Documentation | Schematics, BOM, calculations, results and limitations |
+
+### CAD documentation
+
+If KiCad was used, include the schematic, PCB layout, copper-layer views, 3D board rendering, ERC/DRC results and BOM. If another CAD package was used, document the actual software and its corresponding design outputs.
+
+Do not claim that a particular CAD tool, simulation or manufacturing process was used unless it was part of the actual project.
+
+---
+
+# ✦ 10 — PCB LAYOUT & MANUFACTURING CONSIDERATIONS
+
+## 10.1 — Layout quality checklist
+
+A good PCB must be electrically correct, mechanically practical and appropriate for its intended manufacturing process.
+
+- [ ] Clearly distinguish the AC input terminals from the DC output terminals.
+- [ ] Mark the positive and negative DC output polarities.
+- [ ] Size copper traces according to expected current, copper thickness and permissible temperature rise.
+- [ ] Verify that the footprints match the selected physical components.
+- [ ] Avoid unnecessarily long or narrow high-current paths.
+- [ ] Maintain suitable spacing between conductors for the working voltage and environment.
+- [ ] Consider diode power dissipation and heat transfer to the surrounding board.
+- [ ] Label connectors and polarity on the silkscreen where possible.
+- [ ] Verify connector orientation, mounting holes and mechanical clearances.
+- [ ] Run the CAD design-rule checker before releasing manufacturing files.
+
+## 10.2 — Electrical and thermal considerations
+
+The resistive loss in a PCB conductor can be estimated using:
+
+$$
+\boxed{P_{\mathrm{trace}} = I^2R}
+$$
+
+The conductor resistance depends on its material, length, cross-sectional area and temperature. Therefore, trace width should not be selected from current alone.
+
+For a conductor with uniform cross-section, the approximate resistance is:
+
+$$
+\boxed{R = \rho\frac{L}{A}}
+$$
+
+where:
+
+- \(R\) is the conductor resistance.
+- \(\rho\) is the electrical resistivity of the material.
+- \(L\) is the conductor length.
+- \(A\) is its cross-sectional area.
+
+For low-voltage educational prototypes, these checks improve usability and reliability. If the circuit is intended to connect to mains voltage, additional insulation, creepage, clearance, enclosure, fusing and regulatory requirements become essential.
+
+**Safety warning:** A low-voltage prototype must not be assumed safe for direct mains connection. Initial testing should use a suitable, isolated, current-limited low-voltage AC source. Any mains-voltage work requires appropriate equipment, protective measures and competent supervision.
+
+---
+
+# ✦ 11 — SIMULATION & EXPERIMENTAL VALIDATION
+
+## 11.1 — Three levels of engineering evidence
+
+A rigorous report separates analytical predictions, simulated behavior and physical measurements.
+
+<details open>
+<summary><strong>Level 01 — Theoretical Analysis</strong></summary>
+
+Use the circuit equations to estimate the rectified waveform, average output voltage, diode losses, ripple and expected load behavior.
+
+The assumptions behind each calculation must be stated clearly, especially whether the bridge is unfiltered or capacitor-filtered.
+
+</details>
+
+<details open>
+<summary><strong>Level 02 — Circuit Simulation</strong></summary>
+
+Use a suitable simulator, such as LTspice, Proteus or another SPICE-compatible tool, if simulation is part of the actual project.
+
+Record the model parameters, input waveform, source frequency, load, diode model and any smoothing capacitor. Save the waveform plots and relevant simulation settings.
+
+</details>
+
+<details open>
+<summary><strong>Level 03 — Experimental Validation</strong></summary>
+
+If a physical prototype is available, measure its output using suitable instruments under defined operating conditions.
+
+Document the input voltage, frequency, load resistance, measured current, instrument settings and any relevant temperature observations.
+
+</details>
+
+## 11.2 — Expected waveform behavior
+
+The following diagram illustrates the conceptual relationship between an AC input, a bridge rectifier and its unfiltered output. It is a functional illustration, not a measured waveform from the physical PCB.
+
+```mermaid
+flowchart LR
+    A["AC Source<br/>Sinusoidal Input"] --> B["Four-Diode<br/>Bridge"]
+    B --> C["Full-Wave<br/>Rectified Output"]
+    C --> D["Optional Smoothing<br/>Capacitor"]
+    D --> E["Reduced-Ripple<br/>DC Output"]
+
+    classDef source fill:#202020,stroke:#ff9800,color:#ffffff,stroke-width:1.5px
+    classDef bridge fill:#321a12,stroke:#ff5722,color:#ffffff,stroke-width:2px
+    classDef output fill:#17251d,stroke:#4caf50,color:#ffffff,stroke-width:1.5px
+    classDef optional fill:#202020,stroke:#b0bec5,color:#ffffff,stroke-dasharray:5 5
+
+    class A source
+    class B bridge
+    class C,E output
+    class D optional
+```
+
+The smoothing capacitor is optional. The final diagram and results must reflect whether it is actually present in the circuit.
+
+## 11.3 — Recommended experiments
+
+| Experiment | Procedure | What to Evaluate |
+|:---|:---|:---|
+| A — Input and output waveforms | Observe the AC input and rectified output using suitable measurement equipment | Waveform polarity, rectification behavior and ripple frequency |
+| B — Average DC output | Measure the output under a specified resistive load | Difference between predicted and measured average voltage |
+| C — Load variation | Repeat measurements at multiple suitable load conditions | Load-dependent voltage drop, current and power |
+| D — Ripple analysis | If a smoothing capacitor is fitted, measure ripple under defined conditions | Effect of load current and capacitance |
+| E — Thermal behavior | If the prototype is tested under representative conditions, monitor diode and board temperature | Heating, component limits and thermal stability |
+
+These are proposed experiments, not evidence that the tests have already been performed.
+
+## 11.4 — Experimental results table
+
+Complete this table with actual calculations, simulation outputs and measurements. Use `N/A` when a category does not apply.
+
+| Parameter | Theoretical Value | Simulated Value | Measured Value |
+|:---|:---|:---|:---|
+| AC input RMS voltage | Calculate or specify | Record | Record |
+| Input frequency | Specify | Record | Record |
+| Peak DC output voltage | Calculate under stated assumptions | Record | Record |
+| Average DC output voltage | Calculate under stated assumptions | Record | Record |
+| Output ripple frequency | \(f_r = 2f\) | Record | Record |
+| Peak-to-peak ripple voltage | Calculate if applicable | Record | Record |
+| Load current | Calculate for the load model | Record | Record |
+| Diode temperature rise | Estimate if adequately modeled | Record if available | Measure if tested |
+| Conversion efficiency | Calculate using consistent power definitions | Calculate if available | Calculate if input and output power are measured |
+
+### Important comparison rule
+
+An unfiltered rectifier's average DC output must not be compared directly with the peak voltage of a capacitor-filtered output as though they were the same quantity.
+
+Comparisons are meaningful only when the operating conditions and the measured quantities match.
+
+---
+
+# ✦ 12 — RESULTS, PERFORMANCE & ENGINEERING DISCUSSION
+
+## 12.1 — Expected behavior
+
+A correctly connected full-wave bridge rectifier produces a unidirectional, pulsating output waveform. Both half-cycles of the AC input contribute to the output, and the ripple repetition frequency is twice the input frequency.
+
+In a practical circuit, the output is affected by diode forward-voltage drops, source impedance, input amplitude and loading. If a smoothing capacitor is fitted, the output ripple should generally decrease as capacitance increases, assuming comparable load and input conditions.
+
+However, capacitor charging currents can increase electrical stress on the diodes and source. The board's electrical connectivity alone does not establish its thermal performance, current-carrying capability or mechanical reliability.
+
+## 12.2 — Relative voltage error
+
+Where suitable theoretical and measured values are available, calculate the relative voltage error as follows:
+
+$$
+\boxed{
+\mathrm{Error}(\%) =
+\frac{
+\left|V_{\mathrm{measured}}-V_{\mathrm{theoretical}}\right|
+}{
+\left|V_{\mathrm{theoretical}}\right|
+}
+\times 100\%
+}
+$$
+
+This expression is valid when the theoretical reference is nonzero and both values represent the same quantity under comparable operating conditions.
+
+For example, compare average DC voltage with average DC voltage—not an RMS input voltage with a peak output voltage.
+
+## 12.3 — Conversion efficiency
+
+If input and output power are measured or calculated consistently, the overall conversion efficiency can be evaluated using:
+
+$$
+\boxed{
+\eta(\%) =
+\frac{P_{\mathrm{out}}}{P_{\mathrm{in}}}
+\times 100\%
+}
+$$
+
+For a DC resistive load, the output power can be calculated from the DC voltage and resistance when the voltage definition and load model justify that calculation:
+
+$$
+\boxed{
+P_{\mathrm{out}} = \frac{V_{\mathrm{DC}}^2}{R_L}
+}
+$$
+
+Do not estimate practical efficiency from average output voltage alone unless the assumptions used for input and output power are explicitly justified.
+
+## 12.4 — Discussion questions
+
+1. Did the observed output waveform match the expected full-wave rectified shape?
+2. What explains the differences between theoretical, simulated and measured voltage?
+3. Did the selected components remain within their electrical and thermal ratings?
+4. How did load conditions affect the output voltage and current?
+5. What design changes could improve performance, reliability or manufacturability?
+
+The final discussion should answer these questions using the project's actual evidence.
+
+---
+
+# ✦ 13 — ADVANTAGES OF THE DESIGN
+
+| Advantage | Engineering Explanation |
+|:---|:---|
+| Full-wave utilization | Both AC half-cycles contribute to the output. |
+| No center-tapped secondary required | The bridge can operate from a conventional two-terminal AC secondary. |
+| Simple topology | Four diodes provide a straightforward and widely studied rectification stage. |
+| Accessible PCB implementation | The project supports practical learning in schematic capture, footprints, routing and assembly. |
+| Expandable architecture | Filtering, regulation, protection and additional monitoring can be introduced in later versions. |
+| Strong educational value | The circuit connects fundamental power-electronics equations with physical hardware design. |
+
+### Engineering significance
+
+The project's value is not limited to AC-to-DC conversion. It also provides a foundation for studying component selection, power dissipation, PCB manufacturing and the relationship between theoretical and practical circuit behavior.
+
+---
+
+# ✦ 14 — LIMITATIONS & DESIGN TRADE-OFFS
+
+A credible engineering report identifies the boundaries of the design rather than presenting a simple rectifier as a complete regulated power supply.
+
+| Limitation | Technical Explanation | Possible Improvement |
+|:---|:---|:---|
+| Two diode voltage drops | Two diode junctions conduct in each half-cycle, creating conduction losses. | Evaluate suitable alternative diodes or bridge components. |
+| Pulsating output | The basic bridge does not provide perfectly constant DC. | Add a suitable smoothing capacitor if required. |
+| Thermal losses | Diode dissipation increases with current and depends on operating conditions. | Improve thermal design and verify component ratings. |
+| No inherent voltage regulation | Output voltage varies with input voltage and load. | Add an appropriate regulator stage if required. |
+| Capacitor charging currents | A large smoothing capacitor may create high peak charging currents. | Check surge-current limits and source capability. |
+| Component-rating constraints | Maximum operating voltage and current depend on the actual components and layout. | Verify datasheets and perform electrical and thermal checks. |
+| Limited protection | A basic bridge does not inherently provide short-circuit protection or advanced fault monitoring. | Add suitably designed protection where required. |
+
+These limitations are not automatically design failures. They define the operating boundaries of the circuit and identify possible areas for improvement.
+
+---
+
+# ✦ 15 — INDUSTRIAL RELEVANCE & APPLICATIONS
+
+A bridge rectifier is commonly used as one stage within a larger AC-to-DC power-conversion system. The final application depends on the input source, output requirements and additional circuitry.
+
+| Application Area | Role of Rectification | Additional Requirements |
+|:---|:---|:---|
+| DC power supplies | Converts AC into a unidirectional waveform | Filtering and often voltage regulation |
+| Industrial automation | Can form part of auxiliary control-power supplies | Suitable isolation, protection and reliability |
+| Embedded electronics | Supports power-conversion stages for electronic prototypes | Stable voltage rails and appropriate regulation |
+| Laboratory equipment | Provides a practical platform for power-electronics experiments | Measurement access and suitable protection |
+| Battery-charging systems | May be used in an AC input rectification stage | Dedicated voltage/current control and charging protection |
+
+**Important distinction:** A bridge rectifier alone is not a complete regulated power supply or battery charger. Those applications may require isolation, filtering, regulation, current limiting, protection and control circuitry.
+
+---
+
+# ✦ 16 — MASTER'S-LEVEL ENGINEERING DEVELOPMENT
+
+The existing PCB can serve as the foundation for a more rigorous power-electronics study. The academic contribution becomes stronger when the project includes quantitative analysis, reproducible simulation, controlled experiments and documented conclusions.
+
+## 16.1 — Recommended research extensions
+
+<details open>
+<summary><strong>A — Quantitative Performance Analysis</strong></summary>
+
+Derive the relevant output-voltage expressions and calculate conduction losses, ripple factor, efficiency and load-dependent behavior. State the assumptions used in each model.
+
+</details>
+
+<details open>
+<summary><strong>B — Simulation and Experimental Comparison</strong></summary>
+
+Compare theoretical predictions, circuit-simulation outputs and physical measurements under matching source and load conditions. Explain discrepancies quantitatively.
+
+</details>
+
+<details open>
+<summary><strong>C — Thermal and Component-Rating Analysis</strong></summary>
+
+Estimate diode power dissipation, examine datasheet thermal parameters and verify the component's operating limits under representative conditions.
+
+</details>
+
+<details open>
+<summary><strong>D — PCB Layout Optimization</strong></summary>
+
+Evaluate trace dimensions, component placement, current paths and thermal behavior. Compare alternative layouts where sufficient design and measurement evidence is available.
+
+</details>
+
+<details open>
+<summary><strong>E — Controlled Design Extension</strong></summary>
+
+Compare an unfiltered rectifier with a capacitor-filtered version. If appropriate, add a regulated output stage and investigate efficiency, ripple and thermal limitations.
+
+</details>
+
+## 16.2 — Proposed research question
+
+> **How do load current, smoothing capacitance and PCB layout influence the output ripple, conduction losses and thermal performance of a practical single-phase full-wave bridge rectifier?**
+
+This question can support a structured investigation incorporating:
+
+- Mathematical modeling and analytical calculations.
+- Circuit simulation under controlled operating conditions.
+- PCB layout and component-rating analysis.
+- Experimental measurement and uncertainty discussion.
+- Comparison of alternative design configurations.
+- Evidence-based conclusions and recommendations.
+
+The project should only claim Master's-level validation or novel findings when the relevant analysis and evidence have actually been completed.
+
+---
+
+# ✦ 17 — FUTURE IMPROVEMENTS & DEVELOPMENT ROADMAP
+
+```mermaid
+flowchart TD
+    A(["Current Bridge Rectifier PCB"]) --> B["Stage 1 · Verify Electrical Behavior"]
+    B --> C["Stage 2 · Analyze Losses & Thermal Limits"]
+    C --> D["Stage 3 · Evaluate Output Filtering"]
+    D --> E["Stage 4 · Add Regulation if Required"]
+    E --> F["Stage 5 · Optimize PCB Layout"]
+    F --> G["Stage 6 · Compare Simulation & Measurements"]
+    G --> H(["Documented, Validated Design"])
+
+    classDef start fill:#171717,stroke:#ff5722,color:#ffffff,stroke-width:2px
+    classDef process fill:#202020,stroke:#ff9800,color:#ffffff,stroke-width:1.5px
+    classDef finish fill:#17251d,stroke:#4caf50,color:#ffffff,stroke-width:2px
+
+    class A start
+    class B,C,D,E,F,G process
+    class H finish
+```
+
+## 17.1 — Potential improvements
+
+1. Add a correctly rated smoothing capacitor to reduce output ripple.
+2. Implement a regulated DC output stage appropriate to the required voltage and current.
+3. Compare alternative diode types or integrated bridge components to evaluate conduction losses and thermal behavior.
+4. Add suitable overcurrent protection and other fault protection where necessary.
+5. Optimize copper routing and thermal dissipation.
+6. Develop an automated measurement setup for input voltage, output voltage, load current and temperature.
+7. Compare alternative implementations in terms of cost, performance and reliability.
+8. Prepare a complete engineering package containing the schematic, PCB files, BOM, manufacturing outputs, simulation data and experimental report.
+
+These are proposed future developments. Each should be described as completed only after it has been implemented and verified.
+
+---
+
+# ✦ 18 — CONCLUSION
+
+The project examines the design and implementation of a full-wave bridge rectifier printed circuit board, connecting fundamental power-electronics theory with practical electronic hardware development.
+
+The four-diode bridge provides a straightforward method of converting an alternating input into a unidirectional pulsating output by utilizing both half-cycles of the AC waveform. The analysis highlights the importance of diode characteristics, electrical loading, conduction losses, output ripple, component ratings and PCB layout in determining circuit performance.
+
+The project also demonstrates the value of a structured engineering workflow, including schematic development, component selection, PCB routing, design-rule verification, assembly and controlled testing. These activities help bridge the gap between theoretical circuit models and physical electronic implementation.
+
+Further development can include capacitor filtering, voltage regulation, thermal characterization, PCB optimization and quantitative comparisons between theoretical, simulated and measured results.
+
+Ultimately, the value of this project lies not only in the rectification function itself, but also in the engineering process used to analyze, implement, verify and improve an electronic system. With documented calculations, reproducible simulations and validated measurements, the design can provide a strong foundation for more advanced studies in power electronics and electronic hardware engineering.
+
+---
+
+<div align="center">
+
+### ⚡ THEORY → DESIGN → IMPLEMENTATION → VALIDATION
+
+*Engineering is not only about building a circuit. It is about understanding, measuring and improving its performance.*
+
+![Power Electronics](https://img.shields.io/badge/POWER-ELECTRONICS-ff5722?style=for-the-badge)
+![PCB Engineering](https://img.shields.io/badge/PCB-ENGINEERING-212121?style=for-the-badge)
+![Continuous Improvement](https://img.shields.io/badge/ENGINEERING-CONTINUOUS%20IMPROVEMENT-ff9800?style=for-the-badge)
+
+</div>
