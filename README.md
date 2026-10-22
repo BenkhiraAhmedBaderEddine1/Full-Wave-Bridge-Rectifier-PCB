@@ -476,116 +476,99 @@ $$
 ---
 
 <details open>
-<summary><strong>✦ 06.3 — PRACTICAL OUTPUT VOLTAGE</strong></summary>
+### ✦ 06.3 — PRACTICAL OUTPUT VOLTAGE
 
-<br/>
-
-In a practical bridge, two diodes conduct in series during each half-cycle. A first-order approximation for the instantaneous output voltage is
+In a practical bridge rectifier, two diodes conduct in series during each half-cycle. The instantaneous output voltage can be approximated by:
 
 $$
-\boxed{v_o(t)\approx\max\left(|v_s(t)|-2V_F,\;0\right)}
+\boxed{v_o(t) \approx \max\left( |v_s(t)| - 2V_F,\ 0 \right)}
 $$
 
 where \(V_F\) represents the forward-voltage drop of one conducting diode.
 
-The actual output depends on the diode characteristics, input amplitude, source impedance, load current, and temperature. The constant-drop model is useful for initial calculations but should be checked against datasheets and measurements.
+The actual output depends on the diode characteristics, input amplitude, source impedance, load current, and temperature. The constant-drop model is useful for initial calculations but should be verified against datasheets and measurements.
 
-For a resistive load \(R_L\), the load current is estimated by Ohm's law:
-
-$$
-\boxed{i_L(t)=\frac{v_o(t)}{R_L}}
-$$
-
-The instantaneous power dissipated by the load is
+For a resistive load \(R_L\), Ohm's law gives:
 
 $$
-\boxed{p_L(t)=v_o(t)i_L(t)=\frac{v_o^2(t)}{R_L}}
+\boxed{i_L(t) = \frac{v_o(t)}{R_L}}
 $$
 
-<div align="center">
+The instantaneous power dissipated by the load is:
 
-| PARAMETER | SYMBOL | ENGINEERING MEANING |
-|:--|:--:|:--|
+$$
+\boxed{p_L(t) = v_o(t)i_L(t) = \frac{v_o^2(t)}{R_L}}
+$$
+
+| **Parameter** | **Symbol** | **Engineering Meaning** |
+|:---|:---:|:---|
 | Peak input voltage | \(V_m\) | Maximum instantaneous AC input |
 | Diode forward drop | \(V_F\) | Voltage drop across one conducting diode |
 | Load resistance | \(R_L\) | Resistive output load |
 | Load current | \(i_L(t)\) | Instantaneous current through the load |
 
-</div>
-
-</details>
-
 ---
 
-<details open>
-<summary><strong>✦ 06.4 — RMS VOLTAGE & RECTIFICATION EFFICIENCY</strong></summary>
+### ✦ 06.4 — RMS VOLTAGE & RECTIFICATION EFFICIENCY
 
-<br/>
-
-For the ideal unfiltered full-wave rectified waveform, the RMS output voltage is
+For an ideal, unfiltered, full-wave rectified waveform, the RMS output voltage is:
 
 $$
-\boxed{V_{o,\mathrm{RMS}}=\frac{V_m}{\sqrt{2}}}
+\boxed{V_{o,\mathrm{RMS}} = \frac{V_m}{\sqrt{2}}}
 $$
 
 The ripple factor measures the RMS magnitude of the AC component relative to the DC component:
 
 $$
-r=\sqrt{\left(\frac{V_{o,\mathrm{RMS}}}{V_{DC}}\right)^2-1}
+r = \sqrt{\left(\frac{V_{o,\mathrm{RMS}}}{V_{DC}}\right)^2 - 1}
 $$
 
-Substituting the ideal full-wave rectifier expressions gives
+Substituting the ideal full-wave rectifier expressions gives:
 
 $$
-\boxed{r=\sqrt{\frac{\pi^2}{8}-1}\approx0.482}
+\boxed{r = \sqrt{\frac{\pi^2}{8} - 1} \approx 0.482}
 $$
 
-The rectification efficiency is defined as the ratio of useful DC load power to the AC input power:
+Rectification efficiency is defined as the ratio of useful DC load power to the AC input power:
 
 $$
-\boxed{\eta=\frac{P_{DC}}{P_{AC}}\times100\%}
+\boxed{\eta = \frac{P_{DC}}{P_{AC}} \times 100\%}
 $$
 
-For an ideal full-wave rectifier with a resistive load and ideal diodes, the theoretical maximum rectification efficiency is approximately
+For an ideal full-wave rectifier with a resistive load and ideal diodes, the theoretical maximum rectification efficiency is:
 
-<div align="center">
+$$
+\boxed{\eta_{\max} = \frac{8}{\pi^2} \times 100\% \approx 81.2\%}
+$$
 
-<img src="https://img.shields.io/badge/IDEAL_RECTIFICATION_EFFICIENCY-81.2%25-0E7490?style=for-the-badge" />
-
-</div>
-
-> This is a theoretical value, not a measured efficiency result for the physical PCB. Real diode losses, source impedance, transformer losses, and other nonidealities reduce overall performance.
-
-</details>
+This is a theoretical value, not a measured efficiency result for the physical PCB. Real diode losses, source impedance, transformer losses, and other nonidealities reduce overall performance.
 
 ---
 
-<details open>
-<summary><strong>✦ 06.5 — OUTPUT FILTERING & RIPPLE ANALYSIS</strong></summary>
-
-<br/>
+### ✦ 06.5 — OUTPUT FILTERING & RIPPLE ANALYSIS
 
 When a smoothing capacitor \(C\) is connected across the load, it charges near the rectified voltage peaks and discharges through the load between successive peaks.
 
-For a capacitor-input filter, the approximate peak-to-peak ripple voltage is
+For a capacitor-input filter, the approximate peak-to-peak ripple voltage is:
 
 $$
-\boxed{V_{r(pp)}\approx\frac{I_L}{2fC}}
+\boxed{V_{r(pp)} \approx \frac{I_L}{2fC}}
 $$
 
 where:
 
 - \(V_{r(pp)}\) is the peak-to-peak ripple voltage.
-- \(I_L\) is the DC load current.
+- \(I_L\) is the approximate DC load current.
 - \(f\) is the AC input frequency.
 - \(C\) is the smoothing capacitance.
 
-The full-wave rectifier's ripple repetition frequency is
+The full-wave rectifier's ripple repetition frequency is:
 
 $$
-\boxed{f_r=2f}
+\boxed{f_r = 2f}
 $$
 
+**Engineering note:** The ripple approximation assumes a sufficiently large smoothing capacitor and relatively small ripple. Actual ripple depends on load current, capacitance, input frequency, diode characteristics, and source impedance.
 <div align="center">
 
 ```mermaid
