@@ -549,7 +549,7 @@ This is a theoretical value, not a measured efficiency result for the physical P
 
 When a smoothing capacitor \(C\) is connected across the load, it charges near the rectified voltage peaks and discharges through the load between successive peaks.
 
-For a capacitor-input filter, the approximate peak-to-peak ripple voltage is:
+The approximate peak-to-peak ripple voltage is:
 
 $$
 \boxed{V_{r(pp)} \approx \frac{I_L}{2fC}}
@@ -562,7 +562,7 @@ where:
 - \(f\) is the AC input frequency.
 - \(C\) is the smoothing capacitance.
 
-The full-wave rectifier's ripple repetition frequency is:
+The ripple repetition frequency of a full-wave rectifier is:
 
 $$
 \boxed{f_r = 2f}
