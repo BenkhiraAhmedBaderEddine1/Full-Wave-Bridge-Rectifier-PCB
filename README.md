@@ -409,3 +409,297 @@ flowchart TD
 - Negative half-cycle: the other diagonal pair conducts, maintaining the same current direction through the load.
 - Result: both half-cycles contribute to the output, producing a pulsating DC waveform with twice the input frequency.
 For a conventional single-phase input, the rectified ripple frequency is therefore twice the AC supply frequency
+
+<div align="center">
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=rect&height=5&color=0:7C3AED,45:22D3EE,100:6366F1" />
+
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=800&size=27&duration=2500&pause=900&color=22D3EE&center=true&vCenter=true&width=850&height=55&lines=06.2+IDEAL+OUTPUT+VOLTAGE;06.3+PRACTICAL+RECTIFICATION;06.4+RMS+%26+EFFICIENCY;06.5+OUTPUT+FILTERING" alt="Rectifier mathematical analysis" />
+
+<img src="https://img.shields.io/badge/MATHEMATICAL_MODELING-0B1020?style=for-the-badge&labelColor=312E81" />
+<img src="https://img.shields.io/badge/POWER_ELECTRONICS-0B1020?style=for-the-badge&labelColor=0E7490" />
+<img src="https://img.shields.io/badge/QUANTITATIVE_ANALYSIS-0B1020?style=for-the-badge&labelColor=6D28D9" />
+
+<br/>
+
+<sub>FROM SINUSOIDAL INPUT TO RECTIFIED DC · THEORY MEETS ENGINEERING</sub>
+
+</div>
+
+---
+
+<details open>
+<summary><strong>✦ 06.2 — IDEAL OUTPUT VOLTAGE</strong></summary>
+
+<br/>
+
+For a sinusoidal AC input, the instantaneous source voltage is defined as
+
+$$
+\boxed{v_s(t)=V_m\sin(\omega t)}
+$$
+
+where \(V_m\) is the peak input voltage and \(\omega=2\pi f\) is the angular frequency.
+
+For ideal diodes, the full-wave rectified output is
+
+$$
+\boxed{v_o(t)=\left|V_m\sin(\omega t)\right|}
+$$
+
+The average DC component of the unfiltered output is
+
+$$
+V_{DC}=\frac{1}{2\pi}\int_0^{2\pi}|V_m\sin\theta|\,d\theta
+$$
+
+$$
+\boxed{V_{DC}=\frac{2V_m}{\pi}}
+$$
+
+Since \(V_m=\sqrt{2}\,V_{AC,\mathrm{RMS}}\), the average output can also be expressed as
+
+$$
+\boxed{V_{DC}\approx0.9003\,V_{AC,\mathrm{RMS}}}
+$$
+
+<div align="center">
+
+<img src="https://img.shields.io/badge/KEY_RESULT-0.9003_%C3%97_VAC%2CRMS-312E81?style=for-the-badge" />
+
+</div>
+
+> **Engineering note:** This is the average output of an ideal, unfiltered full-wave rectifier. It is not the peak output voltage of a rectifier with a large smoothing capacitor.
+
+</details>
+
+---
+
+<details open>
+<summary><strong>✦ 06.3 — PRACTICAL OUTPUT VOLTAGE</strong></summary>
+
+<br/>
+
+In a practical bridge, two diodes conduct in series during each half-cycle. A first-order approximation for the instantaneous output voltage is
+
+$$
+\boxed{v_o(t)\approx\max\left(|v_s(t)|-2V_F,\;0\right)}
+$$
+
+where \(V_F\) represents the forward-voltage drop of one conducting diode.
+
+The actual output depends on the diode characteristics, input amplitude, source impedance, load current, and temperature. The constant-drop model is useful for initial calculations but should be checked against datasheets and measurements.
+
+For a resistive load \(R_L\), the load current is estimated by Ohm's law:
+
+$$
+\boxed{i_L(t)=\frac{v_o(t)}{R_L}}
+$$
+
+The instantaneous power dissipated by the load is
+
+$$
+\boxed{p_L(t)=v_o(t)i_L(t)=\frac{v_o^2(t)}{R_L}}
+$$
+
+<div align="center">
+
+| PARAMETER | SYMBOL | ENGINEERING MEANING |
+|:--|:--:|:--|
+| Peak input voltage | \(V_m\) | Maximum instantaneous AC input |
+| Diode forward drop | \(V_F\) | Voltage drop across one conducting diode |
+| Load resistance | \(R_L\) | Resistive output load |
+| Load current | \(i_L(t)\) | Instantaneous current through the load |
+
+</div>
+
+</details>
+
+---
+
+<details open>
+<summary><strong>✦ 06.4 — RMS VOLTAGE & RECTIFICATION EFFICIENCY</strong></summary>
+
+<br/>
+
+For the ideal unfiltered full-wave rectified waveform, the RMS output voltage is
+
+$$
+\boxed{V_{o,\mathrm{RMS}}=\frac{V_m}{\sqrt{2}}}
+$$
+
+The ripple factor measures the RMS magnitude of the AC component relative to the DC component:
+
+$$
+r=\sqrt{\left(\frac{V_{o,\mathrm{RMS}}}{V_{DC}}\right)^2-1}
+$$
+
+Substituting the ideal full-wave rectifier expressions gives
+
+$$
+\boxed{r=\sqrt{\frac{\pi^2}{8}-1}\approx0.482}
+$$
+
+The rectification efficiency is defined as the ratio of useful DC load power to the AC input power:
+
+$$
+\boxed{\eta=\frac{P_{DC}}{P_{AC}}\times100\%}
+$$
+
+For an ideal full-wave rectifier with a resistive load and ideal diodes, the theoretical maximum rectification efficiency is approximately
+
+<div align="center">
+
+<img src="https://img.shields.io/badge/IDEAL_RECTIFICATION_EFFICIENCY-81.2%25-0E7490?style=for-the-badge" />
+
+</div>
+
+> This is a theoretical value, not a measured efficiency result for the physical PCB. Real diode losses, source impedance, transformer losses, and other nonidealities reduce overall performance.
+
+</details>
+
+---
+
+<details open>
+<summary><strong>✦ 06.5 — OUTPUT FILTERING & RIPPLE ANALYSIS</strong></summary>
+
+<br/>
+
+When a smoothing capacitor \(C\) is connected across the load, it charges near the rectified voltage peaks and discharges through the load between successive peaks.
+
+For a capacitor-input filter, the approximate peak-to-peak ripple voltage is
+
+$$
+\boxed{V_{r(pp)}\approx\frac{I_L}{2fC}}
+$$
+
+where:
+
+- \(V_{r(pp)}\) is the peak-to-peak ripple voltage.
+- \(I_L\) is the DC load current.
+- \(f\) is the AC input frequency.
+- \(C\) is the smoothing capacitance.
+
+The full-wave rectifier's ripple repetition frequency is
+
+$$
+\boxed{f_r=2f}
+$$
+
+<div align="center">
+
+```mermaid
+flowchart LR
+    A["AC Source"] --> B["Four-Diode Bridge"]
+    B --> C["Pulsating DC"]
+    C --> D{"Filter fitted?"}
+    D -->|Yes| E["Capacitor Filter"]
+    D -->|No| F["Unfiltered Output"]
+    E --> G["Reduced Ripple"]
+    F --> H["Higher Ripple"]
+
+    classDef source fill:#172554,stroke:#60A5FA,color:#fff,stroke-width:2px
+    classDef bridge fill:#312E81,stroke:#A78BFA,color:#fff,stroke-width:2px
+    classDef output fill:#064E3B,stroke:#34D399,color:#fff,stroke-width:2px
+    classDef choice fill:#0E7490,stroke:#22D3EE,color:#fff,stroke-width:2px
+    class A source
+    class B bridge
+    class C,E,F,G,H output
+    class D choice
+```
+
+</div>
+
+**Design trade-off:** A smoothing capacitor reduces ripple but can increase peak charging currents and diode stress. Capacitor voltage rating, ripple-current rating, load conditions, and diode current capability must therefore be considered.
+
+</details>
+
+---
+
+<div align="center">
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=rect&height=4&color=0:7C3AED,50:22D3EE,100:6366F1" />
+
+## ✦ 07 — ILLUSTRATIVE DESIGN CALCULATIONS
+
+<sub>EXAMPLE VALUES FOR ANALYSIS · NOT MEASURED PCB RESULTS</sub>
+
+</div>
+
+For illustration, consider a sinusoidal input of \(12\,\mathrm{V_{RMS}}\), a frequency of \(50\,\mathrm{Hz}\), a resistive load of \(1\,\mathrm{k\Omega}\), and a nominal diode forward drop of \(0.7\,\mathrm{V}\) per conducting diode.
+
+<div align="center">
+
+| DESIGN PARAMETER | VALUE |
+|:--|--:|
+| AC input voltage | **12 V RMS** |
+| Input frequency | **50 Hz** |
+| Peak input voltage | **16.97 V** |
+| Rectified ripple frequency | **100 Hz** |
+| Load resistance | **1 kΩ** |
+| Assumed forward drop per diode | **0.7 V** |
+
+</div>
+
+### `07.1 — Peak Output Voltage`
+
+$$
+V_m=\sqrt{2}\times12\approx16.97\,\mathrm{V}
+$$
+
+$$
+\boxed{V_{o,pk}\approx16.97-2(0.7)=15.57\,\mathrm{V}}
+$$
+
+### `07.2 — Average Output Voltage`
+
+Ideal, unfiltered output:
+
+$$
+V_{DC,\mathrm{ideal}}=0.9003\times12\approx10.80\,\mathrm{V}
+$$
+
+Simplified constant-diode-drop estimate:
+
+$$
+V_{DC,\mathrm{approx}}\approx\frac{2V_m}{\pi}-2V_F
+$$
+
+$$
+\boxed{V_{DC,\mathrm{approx}}\approx9.40\,\mathrm{V}}
+$$
+
+This simplified estimate is not an exact integration of the practical conduction waveform. It can become inaccurate at low input voltages or under significant loading.
+
+### `07.3 — Average Load Current & Power`
+
+Using the simplified average-voltage estimate:
+
+$$
+I_{L,\mathrm{approx}}\approx\frac{9.40}{1000}
+=\boxed{9.40\,\mathrm{mA}}
+$$
+
+$$
+P_{L,\mathrm{approx}}\approx\frac{(9.40)^2}{1000}
+=\boxed{88.36\,\mathrm{mW}}
+$$
+
+These are illustrative estimates based on the stated assumptions. Actual load power should be calculated from the measured or simulated voltage and current waveforms.
+
+<div align="center">
+
+<img src="https://img.shields.io/badge/NOTE-ILLUSTRATIVE_CALCULATIONS-312E81?style=for-the-badge" />
+<img src="https://img.shields.io/badge/NO_MEASURED_RESULTS_CLAIMED-0B1020?style=for-the-badge&labelColor=0E7490" />
+
+</div>
+
+---
+
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&height=100&color=0:080B24,50:312E81,100:0891B2&section=footer" width="100%" />
+
+<sub>MATHEMATICAL MODELING · POWER CONVERSION · PCB ENGINEERING</sub>
+
+</div>
