@@ -1,8 +1,7 @@
-```html
-<div align="center">
+ <div align="center">
 
 <a href="https://github.com/BenkhiraAhmedBaderEddine1/Power-Electronics-PCB">
-  <img width="100%" src="https://capsule-render.vercel.app/api?type=rect&height=12&color=0:071A12,50:C8A85D,100:071A12" />
+<img width="100%" src="https://capsule-render.vercel.app/api?type=rect&height=12&color=0:071A12,50:C8A85D,100:071A12" />
 </a>
 
 <br/>
@@ -11,22 +10,20 @@
 
 <br/>
 
-<p>
-  <img src="https://img.shields.io/badge/POWER_ELECTRONICS-10251B?style=for-the-badge&logoColor=E8D29A" />
-  <img src="https://img.shields.io/badge/PCB_DESIGN-174C38?style=for-the-badge&logoColor=FFFFFF" />
-  <img src="https://img.shields.io/badge/AC--DC_CONVERSION-C8A85D?style=for-the-badge&logoColor=111111" />
-  <img src="https://img.shields.io/badge/ELECTRONICS-0D1117?style=for-the-badge&logo=circuitverse&logoColor=E8D29A" />
-</p>
+<img src="https://img.shields.io/badge/POWER_ELECTRONICS-10251B?style=for-the-badge" />
+<img src="https://img.shields.io/badge/PCB_DESIGN-176B50?style=for-the-badge" />
+<img src="https://img.shields.io/badge/AC--DC_CONVERSION-C8A85D?style=for-the-badge" />
+<img src="https://img.shields.io/badge/ELECTRONICS-0D1117?style=for-the-badge&logo=arduino&logoColor=E8D29A" />
+
+<br/><br/>
 
 ### ✦ ENGINEERING PRECISION. POWER CONVERSION. ELECTRONIC DESIGN. ✦
 
-*An engineering project exploring full-wave rectification, semiconductor behavior, and printed circuit board implementation.*
+*Bridging electrical theory and practical hardware through full-wave rectification and PCB engineering.*
 
 <br/>
 
 <img width="70%" src="https://capsule-render.vercel.app/api?type=soft&height=30&color=0:071A12,50:C8A85D,100:071A12&section=header" />
-
-<br/>
 
 </div>
 
@@ -36,201 +33,160 @@
 
 <img width="100%" src="https://capsule-render.vercel.app/api?type=rect&height=3&color=0:063D2B,50:C8A85D,100:063D2B" />
 
-<br/>
-
 ## ✦ 01 · POWER ELECTRONICS SHOWCASE ✦
 
 <br/>
 
-<img src="https://img.shields.io/badge/FOUR--DIODE_BRIDGE-0B1712?style=for-the-badge&labelColor=0B1712" />
-<img src="https://img.shields.io/badge/FULL--WAVE_RECTIFICATION-176B50?style=for-the-badge&labelColor=0B1712" />
-<img src="https://img.shields.io/badge/HARDWARE_ENGINEERING-C8A85D?style=for-the-badge&labelColor=0B1712" />
+<img src="https://img.shields.io/badge/FOUR--DIODE_BRIDGE-0B1712?style=for-the-badge" />
+<img src="https://img.shields.io/badge/FULL--WAVE_RECTIFICATION-176B50?style=for-the-badge" />
+<img src="https://img.shields.io/badge/HARDWARE_ENGINEERING-C8A85D?style=for-the-badge" />
 
 <br/><br/>
-
-</div>
-
-<!-- Replace these paths with real images from your repository. -->
-
-<div align="center">
 
 <img src="assets/rectifier-pcb-3d.png" width="88%" alt="Full-Wave Bridge Rectifier PCB 3D Design" />
 
 <br/><br/>
 
-<img src="assets/rectifier-schematic.png" width="80%" alt="Bridge Rectifier Circuit Schematic" />
-
-<br/>
-
-<sub>SCHEMATIC DESIGN · PCB LAYOUT · POWER ELECTRONICS</sub>
+<sub> CIRCUIT DESIGN · SEMICONDUCTOR ELECTRONICS · PCB IMPLEMENTATION </sub>
 
 </div>
 
-<br/>
+---
 
 <div align="center">
 
 <img width="100%" src="https://capsule-render.vercel.app/api?type=rect&height=3&color=0:071A12,50:2ECC71,100:071A12" />
 
-<br/>
-
-## ✦ 02 · ENGINEERING DESIGN ✦
+## ✦ 02 · RECTIFIER ARCHITECTURE ✦
 
 <br/>
 
-<table>
-<tr>
-<td align="center" width="33%">
-<img src="https://img.shields.io/badge/01-C8A85D?style=for-the-badge" />
-<br/><br/>
-<b>AC INPUT</b>
+| 01 · AC INPUT | 02 · DIODE BRIDGE | 03 · DC OUTPUT |
+|:---:|:---:|:---:|
+| Alternating voltage | Four-diode rectification | Unidirectional voltage |
+| Input stage | Conversion stage | Output stage |
+
 <br/>
-<sub>Alternating Voltage</sub>
-</td>
-<td align="center" width="33%">
-<img src="https://img.shields.io/badge/02-176B50?style=for-the-badge" />
-<br/><br/>
-<b>DIODE BRIDGE</b>
+
+<img src="assets/rectifier-schematic.png" width="85%" alt="Full-Wave Bridge Rectifier Circuit Schematic" />
+
 <br/>
-<sub>Full-Wave Rectification</sub>
-</td>
-<td align="center" width="33%">
-<img src="https://img.shields.io/badge/03-C8A85D?style=for-the-badge" />
-<br/><br/>
-<b>DC OUTPUT</b>
-<br/>
-<sub>Unidirectional Voltage</sub>
-</td>
-</tr>
-</table>
+
+<sub>FROM ALTERNATING CURRENT TO FULL-WAVE RECTIFIED OUTPUT</sub>
 
 </div>
 
-<br/>
+---
 
 <div align="center">
 
 <img width="100%" src="https://capsule-render.vercel.app/api?type=rect&height=3&color=0:063D2B,50:C8A85D,100:063D2B" />
 
+## ✦ 03 · ENGINEERING DESIGN ✦
+
 <br/>
 
-## ✦ 03 · TECHNICAL SPECIFICATIONS ✦
+<img src="https://img.shields.io/badge/CIRCUIT_ANALYSIS-10251B?style=for-the-badge" />
+<img src="https://img.shields.io/badge/COMPONENT_SELECTION-176B50?style=for-the-badge" />
+<img src="https://img.shields.io/badge/PCB_ROUTING-C8A85D?style=for-the-badge" />
+<img src="https://img.shields.io/badge/HARDWARE_VALIDATION-0D1117?style=for-the-badge" />
+
+<br/><br/>
+
+<img src="assets/rectifier-pcb-layout.png" width="90%" alt="Printed Circuit Board Layout" />
+
+<br/>
+
+<sub>COMPONENT PLACEMENT · COPPER ROUTING · ELECTRICAL CONNECTIVITY</sub>
+
+</div>
+
+---
+
+<div align="center">
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=rect&height=3&color=0:071A12,50:C8A85D,100:071A12" />
+
+## ✦ 04 · TECHNICAL SPECIFICATIONS ✦
 
 <br/>
 
 <img src="https://img.shields.io/badge/TOPOLOGY-FULL--WAVE_BRIDGE-10251B?style=for-the-badge" />
-<img src="https://img.shields.io/badge/COMPONENTS-SEMICONDUCTOR_DIODES-176B50?style=for-the-badge" />
-<img src="https://img.shields.io/badge/PLATFORM-PRINTED_CIRCUIT_BOARD-C8A85D?style=for-the-badge" />
+
+<img src="https://img.shields.io/badge/CORE_COMPONENTS-SEMICONDUCTOR_DIODES-176B50?style=for-the-badge" />
+
+<img src="https://img.shields.io/badge/IMPLEMENTATION-PRINTED_CIRCUIT_BOARD-C8A85D?style=for-the-badge" />
+
+<img src="https://img.shields.io/badge/DOMAIN-POWER_ELECTRONICS-0D1117?style=for-the-badge" />
 
 <br/><br/>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&height=2&color=0:071A12,50:2ECC71,100:071A12" width="75%" />
+| DESIGN AREA | ENGINEERING FOCUS |
+|:---|:---|
+| Rectification | Full-wave AC-to-DC conversion |
+| Semiconductor devices | Diode conduction and forward-voltage drop |
+| Electrical analysis | Voltage, current and power losses |
+| PCB engineering | Footprints, trace routing and component placement |
+| Performance evaluation | Waveforms, ripple and output characteristics |
 
 </div>
 
-<br/>
+---
 
 <div align="center">
 
-## ✦ 04 · DESIGN & IMPLEMENTATION ✦
-
-<br/>
-
-<img src="https://img.shields.io/badge/CIRCUIT_ANALYSIS-0B1712?style=for-the-badge&logoColor=E8D29A" />
-<img src="https://img.shields.io/badge/COMPONENT_SELECTION-174C38?style=for-the-badge" />
-<img src="https://img.shields.io/badge/PCB_ROUTING-C8A85D?style=for-the-badge" />
-<img src="https://img.shields.io/badge/HARDWARE_VALIDATION-0B1712?style=for-the-badge" />
-
-</div>
-
-<br/>
-
-<div align="center">
-
-<img width="100%" src="https://capsule-render.vercel.app/api?type=rect&height=3&color=0:063D2B,50:C8A85D,100:063D2B" />
-
-<br/>
+<img width="100%" src="https://capsule-render.vercel.app/api?type=rect&height=3&color=0:063D2B,50:2ECC71,100:063D2B" />
 
 ## ✦ 05 · PROJECT GALLERY ✦
 
 <br/>
 
-<table>
-<tr>
-<td align="center" width="50%">
-<img src="assets/rectifier-schematic.png" width="100%" alt="Circuit Schematic" />
-<br/><br/>
-<b>01 · CIRCUIT SCHEMATIC</b>
-<br/>
-<sub>Electrical connections and diode bridge topology</sub>
-</td>
-<td align="center" width="50%">
-<img src="assets/rectifier-pcb-layout.png" width="100%" alt="PCB Layout" />
-<br/><br/>
-<b>02 · PCB LAYOUT</b>
-<br/>
-<sub>Component placement and copper routing</sub>
-</td>
-</tr>
-<tr>
-<td align="center" width="50%">
-<img src="assets/rectifier-pcb-3d.png" width="100%" alt="PCB 3D Model" />
-<br/><br/>
-<b>03 · THREE-DIMENSIONAL VIEW</b>
-<br/>
-<sub>Board geometry and component arrangement</sub>
-</td>
-<td align="center" width="50%">
-<img src="assets/rectifier-waveforms.png" width="100%" alt="Rectifier Waveforms" />
-<br/><br/>
-<b>04 · SIGNAL ANALYSIS</b>
-<br/>
-<sub>Input and rectified output waveforms</sub>
-</td>
-</tr>
-</table>
+| CIRCUIT SCHEMATIC | PCB LAYOUT |
+|:---:|:---:|
+| <img src="assets/rectifier-schematic.png" width="100%" alt="Circuit schematic" /> | <img src="assets/rectifier-pcb-layout.png" width="100%" alt="PCB layout" /> |
+| **Electrical Architecture** | **Board Routing** |
 
-<sub>Replace the example image paths with the corresponding files available in your repository.</sub>
+<br/>
+
+| 3D PCB MODEL | RECTIFIED WAVEFORMS |
+|:---:|:---:|
+| <img src="assets/rectifier-pcb-3d.png" width="100%" alt="PCB 3D model" /> | <img src="assets/rectifier-waveforms.png" width="100%" alt="Rectifier waveforms" /> |
+| **Hardware Visualization** | **Signal Analysis** |
 
 </div>
 
-<br/>
+---
 
 <div align="center">
 
-<img width="100%" src="https://capsule-render.vercel.app/api?type=rect&height=3&color=0:071A12,50:2ECC71,100:071A12" />
-
-<br/>
+<img width="100%" src="https://capsule-render.vercel.app/api?type=rect&height=3&color=0:071A12,50:C8A85D,100:071A12" />
 
 ## ✦ 06 · ENGINEERING FOCUS ✦
 
 <br/>
 
 <img src="https://img.shields.io/badge/01-CIRCUIT_THEORY-10251B?style=flat-square" />
-<img src="https://img.shields.io/badge/02-DIODE_CHARACTERISTICS-174C38?style=flat-square" />
+<img src="https://img.shields.io/badge/02-DIODE_CHARACTERISTICS-176B50?style=flat-square" />
 <img src="https://img.shields.io/badge/03-VOLTAGE_ANALYSIS-C8A85D?style=flat-square" />
 <img src="https://img.shields.io/badge/04-POWER_LOSSES-10251B?style=flat-square" />
-<img src="https://img.shields.io/badge/05-PCB_MANUFACTURABILITY-174C38?style=flat-square" />
+<img src="https://img.shields.io/badge/05-PCB_MANUFACTURABILITY-176B50?style=flat-square" />
 
 <br/><br/>
 
 <img width="100%" src="https://capsule-render.vercel.app/api?type=rect&height=3&color=0:063D2B,50:C8A85D,100:063D2B" />
-
-<br/>
 
 ## ✦ POWER ELECTRONICS · ENGINEERED WITH PRECISION ✦
 
 <br/>
 
 <a href="https://github.com/BenkhiraAhmedBaderEddine1/Power-Electronics-PCB">
-  <img src="https://img.shields.io/badge/EXPLORE_PROJECT-0B1712?style=for-the-badge&logo=github&logoColor=E8D29A" />
+<img src="https://img.shields.io/badge/EXPLORE_PROJECT-0B1712?style=for-the-badge&logo=github&logoColor=E8D29A" />
 </a>
 
 <br/><br/>
 
-<img width="100%" src="https://capsule-render.vercel.app/api?type=rect&height=8&color=0:071A12,50:C8A85D,100:071A12" />
+<img width="100%" src="https://capsule-render.vercel.app/api?type=rect&height=10&color=0:071A12,50:C8A85D,100:071A12" />
 
 <sub>POWER ELECTRONICS · PCB ENGINEERING · AC-TO-DC CONVERSION</sub>
 
 </div>
-```
