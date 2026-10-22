@@ -487,3 +487,5 @@ This equation is an approximation for a capacitor-input filter; it does not desc
 <img src="https://capsule-render.vercel.app/api?type=waving&height=100&color=0:080B24,50:312E81,100:0891B2&section=footer" width="100%" />
 
 </div>
+
+![image alt](https://github.com/BenkhiraAhmedBaderEddine1/Full-Wave-Bridge-Rectifier-PCB/blob/f37bd425aad6ffb6e8810d74ae36cebe46ec6604/Screenshot%202026-10-22%20201908.png)
